@@ -104,11 +104,11 @@ class MonteCarloPricing():
 st.title('Pricing des Options')
 
 
-apptitle = 'Projet Pricing des options'
+apptitle = 'Projet Pricing des options européennes'
 
 
 # Title the app
-st.title('des options européennes')
+#st.title('des options européennes')
 
 # @st.cache(ttl=3600, max_entries=10)   #-- Magic command to cache data
 
@@ -119,7 +119,7 @@ st.sidebar.markdown("## Selectioner la methode de calcule ")
 
 st.markdown('### Travail realisé par: Yassine Rhzif, Ahmed Ouaboune. Filière: finance et ingenierie decisionnelle')
 #st.markdown('<center><img src="https://raw.githubusercontent.com/RHZIF/streamlit_test/main/ensa.png" width="300"  height="100" alt="Ensa logo"></center>', unsafe_allow_html=True)
-st.markdown("### Sous l'encadrement de Pr. Soukaina Hadiri")
+st.markdown("### Sous l'encadrement de Pr. ")
 st.markdown('##')
 st.markdown('__________________________________________________________')
 
