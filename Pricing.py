@@ -108,7 +108,7 @@ apptitle = 'Projet Pricing des options'
 
 
 # Title the app
-st.title('Valorisation des actions cotées en Bourse de Casablanca ')
+st.title('des options européennes')
 
 # @st.cache(ttl=3600, max_entries=10)   #-- Magic command to cache data
 
@@ -125,7 +125,7 @@ st.markdown('__________________________________________________________')
 
 
 #dropdown = st.sidebar.selectbox("Choisir une action", py.get_stocks(country='morocco').name)
-monte = st.sidebar.selectbox("methode de calcule ", ['classique','reduction variance'])
+monte = st.sidebar.selectbox("methode de calcule ", ['classique','reduction de la variance'])
 
 #-----------------------
 
