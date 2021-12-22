@@ -101,7 +101,7 @@ class MonteCarloPricing():
 
 #_______________________________
 # Main title
-st.title('Pricing des Options')
+#st.title('Pricing des Options')
 
 
 #apptitle = 'Projet Pricing des options européennes'
