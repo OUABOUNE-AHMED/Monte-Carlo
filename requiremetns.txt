@@ -1,0 +1,10 @@
+investpy
+pandas
+requests
+streamlit
+bs4
+plotly
+Casabourselib
+scipy
+matplotlib
+datetime
