@@ -108,7 +108,7 @@ class MonteCarloPricing():
 
 
 # Title the app
-st.title('Projet Pricing des options européennes')
+st.title('Projet Pricing des options ')
 
 # @st.cache(ttl=3600, max_entries=10)   #-- Magic command to cache data
 
