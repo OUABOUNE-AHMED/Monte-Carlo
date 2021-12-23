@@ -133,7 +133,7 @@ if monte == "classique":
   # Parameters for Monte Carlo simulation
     #ticker = st.text_input('Ticker symbol', 'AAPL')
     ticker = st.selectbox("Ticker symbol", py.get_stocks_list(country='United States'))
-    strike_price = st.number_input('Strike price', 300)
+    strike_price = st.number_input('Strike price', 100)
     risk_free_rate = st.slider('Risk-free rate (%)', 0, 100, 10)
     sigma = st.slider('Sigma (%)', 0, 100, 20)
     exercise_date = st.date_input('Exercise date', min_value=datetime.today() + timedelta(days=1), value=datetime.today() + timedelta(days=365))
