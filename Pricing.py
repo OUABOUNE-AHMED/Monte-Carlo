@@ -97,7 +97,7 @@ class MonteCarloPricing():
         plt.xlabel('Days in future')
         plt.title(f'First {num_of_movements}/{self.N} Random Price Movements')
         plt.legend(loc='best')
-        plt.show()
+        return plt 
 
 #_______________________________
 # Main title
@@ -157,8 +157,8 @@ if monte == "classique":
         MC.simulate_prices()
 
         # Visualizing Monte Carlo Simulation
-        MC.plot_simulation_results(num_of_movements)
-        # st.pyplot()
+        plt = MC.plot_simulation_results(num_of_movements)
+        st.pyplot(plt)
 
         # Calculating call/put option price
         call_option_price = MC._calculate_call_option_price()
