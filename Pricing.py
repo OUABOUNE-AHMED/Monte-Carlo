@@ -158,7 +158,7 @@ if monte == "classique":
 
         # Visualizing Monte Carlo Simulation
         MC.plot_simulation_results(num_of_movements)
-        st.pyplot()
+        # st.pyplot()
 
         # Calculating call/put option price
         call_option_price = MC._calculate_call_option_price()
