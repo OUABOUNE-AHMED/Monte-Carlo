@@ -135,7 +135,7 @@ monte = st.sidebar.selectbox("methode de calcule ", ['classique','reduction de l
 if monte == "classique":
   # Parameters for Monte Carlo simulation
     #ticker = st.text_input('Ticker symbol', 'AAPL')
-    ticker = st.selectbox("Ticker symbol", py.get_stocks_list(country='United States'))
+    ticker = st.selectbox("Ticker symbol", py.get_stocks_list(country='France'))
     strike_price = st.number_input('Strike price', 100)
     risk_free_rate = st.slider('Risk-free rate (%)', 0, 100, 10)
     sigma = st.slider('Sigma (%)', 0, 100, 20)
