@@ -117,10 +117,7 @@ st.title('Projet Pricing des options ')
 st.sidebar.markdown("## Selectioner la methode de calcule ")
 
 
-st.markdown('### Travail realisé par: ')
-st.markdown('- Ahmed Ouaboune')
-st.markdown('- Yassine Rhzif')
-st.markdown('#### Filière: finance et ingenierie decisionnelle')
+st.markdown('### Travail realisé par: -Yassine Rhzif \n -Ahmed Ouaboune \nFilière: finance et ingenierie decisionnelle')
 st.markdown('<center><img src="https://raw.githubusercontent.com/RHZIF/streamlit_test/main/ensa.png" width="300"  height="100" alt="Ensa logo"></center>', unsafe_allow_html=True)
 st.markdown("### Sous l'encadrement de Pr. Brahim El Asri")
 st.markdown('##')
@@ -171,7 +168,53 @@ if monte == "classique":
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
 
-    
+    else st.button(f'Calculate option price for {ticker}'):
+        # Getting data for selected ticker
+        data = py.get_stock_historical_data(stock=ticker, country='United States', from_date="01/01/1900", to_date= datetime.today().strftime('%d/%m/%Y'))
+        st.write(data.tail())
+        st.line_chart(data.Close)
+
+        # Formating simulation parameters
+        spot_price = data.Close[-1] 
+        risk_free_rate = risk_free_rate / 100
+        sigma = sigma / 100
+        days_to_maturity = (exercise_date - datetime.now().date()).days
+
+        # ESimulating stock movements
+        MC = MonteCarloPricing(spot_price, strike_price, days_to_maturity, risk_free_rate, sigma, number_of_simulations)
+        MC.simulate_prices()
+
+        # Visualizing Monte Carlo Simulation
+        plt = MC.plot_simulation_results(num_of_movements)
+        st.pyplot(plt)
+        #___________________________
+        S0 = spot_price ; K = strike_price ; T= days_to_maturity; r = risk_free_rate; sigma = sigma
+        M = 365; dt = T / M; I = number_of_simulations
+        S1 = S0 * exp(cumsum((r - 0.5 * sigma ** 2) * dt + sigma *math.sqrt(dt)* random.standard_normal((M + 1,I)), axis=0))
+        S2 = S0 * exp(cumsum((r - 0.5 * sigma ** 2) * dt + sigma *(-math.sqrt(dt)* random.standard_normal((M + 1,I))), axis=0))
+        S1[0] = S0
+        S2[0] = S0
+        # Estimation de monte carlo 
+        #call
+        C0_call1 = math.exp(-r * T) * sum(maximum(S1[-1] - K, 0)) / I 
+        C0_call2 = math.exp(-r * T) * sum(maximum(S2[-1] - K, 0)) / I
+        #C0_call = math.exp(-r * T) *((sum(maximum(S1[-1] - K, 0))+sum(maximum(S2[-1] - K, 0)))/2)/I
+        C0_call = (C0_call1+C0_call2)/2
+        #put
+        C0_put1 = math.exp(-r * T) * sum(maximum(K- S1[-1] , 0)) / I 
+        C0_put2 = math.exp(-r * T) * sum(maximum(K- S2[-1], 0)) / I
+        #C0_put = math.exp(-r * T) *((sum(maximum(K - S1[-1] , 0))+sum(maximum(K - S2[-1], 0)))/2)/I
+        C0_put = (C0_put2+C0_put1)/2
+        #________________________________________
+        # Calculating call/put option price
+        call_option_price = C0_call
+        put_option_price  = C0_put
+        #call_option_price = std((math.exp(-r * T) * maximum(S2[-1] - strike_price, 0) +math.exp(-r * T) * maximum(S1[-1] - strike_price , 0) )/2)/math.sqrt(I)
+        #put_option_price = std((math.exp(-r * T) * maximum(strike_price- S2[-1], 0) +math.exp(-r * T) * maximum(strike_price- S1[-1] , 0) )/2)/math.sqrt(I))
+
+        # Displaying call/put option price
+        st.subheader(f'Call option price: {call_option_price}')
+        st.subheader(f'Put option price: {put_option_price}')
 
 
 #------------------
