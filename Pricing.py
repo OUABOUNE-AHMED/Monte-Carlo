@@ -117,7 +117,7 @@ st.title('Projet Pricing des options ')
 st.sidebar.markdown("## Selectioner la methode de calcule ")
 
 
-st.markdown('### Travail realisé par: Yassine Rhzif, Ahmed Ouaboune. Filière: finance et ingenierie decisionnelle')
+st.markdown('### Travail realisé par: -Yassine Rhzif \n -Ahmed Ouaboune \nFilière: finance et ingenierie decisionnelle')
 st.markdown('<center><img src="https://raw.githubusercontent.com/RHZIF/streamlit_test/main/ensa.png" width="300"  height="100" alt="Ensa logo"></center>', unsafe_allow_html=True)
 st.markdown("### Sous l'encadrement de Pr. Brahim El Asri")
 st.markdown('##')
