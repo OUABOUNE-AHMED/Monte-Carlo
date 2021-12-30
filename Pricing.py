@@ -135,7 +135,7 @@ monte = st.sidebar.selectbox("methode de calcule ", ['classique','reduction de l
 if monte == "classique":
   # Parameters for Monte Carlo simulation
     #ticker = st.text_input('Ticker symbol', 'AAPL')
-    ticker = st.selectbox("Ticker symbol", py.get_stocks_list(country='France'))
+    ticker = st.selectbox("Ticker symbol", py.get_stocks_list(country='United States'))
     strike_price = st.number_input('Strike price', 100)
     risk_free_rate = st.slider('Risk-free rate (%)', 0, 100, 10)
     sigma = st.slider('Sigma (%)', 0, 100, 20)
@@ -145,7 +145,7 @@ if monte == "classique":
 
     if st.button(f'Calculate option price for {ticker}'):
         # Getting data for selected ticker
-        data = py.get_stock_historical_data(stock=ticker, country='France', from_date="01/01/1900", to_date= datetime.today().strftime('%d/%m/%Y'))
+        data = py.get_stock_historical_data(stock=ticker, country='United States', from_date="01/01/1900", to_date= datetime.today().strftime('%d/%m/%Y'))
         st.write(data.tail())
         st.line_chart(data.Close)
 
