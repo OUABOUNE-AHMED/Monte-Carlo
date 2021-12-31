@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd 
 import requests
 import investpy as py
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 #import Casabourselib as cbl 
 from enum import Enum
 from datetime import datetime, timedelta
