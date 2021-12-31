@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd 
-#import requests
+import requests
 import investpy as py
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 #import Casabourselib as cbl 
 from enum import Enum
 from datetime import datetime, timedelta
@@ -205,8 +205,8 @@ else:
         #___________________________
         S0 = spot_price ; K = strike_price ; T= days_to_maturity; r = risk_free_rate; sigma = sigma
         M = 365; dt = T / M; I = number_of_simulations
-        S1 = S0 * exp(cumsum((r - 0.5 * sigma ** 2) * dt + sigma *math.sqrt(dt)* random.standard_normal((M + 1,I)), axis=0))
-        S2 = S0 * exp(cumsum((r - 0.5 * sigma ** 2) * dt + sigma *(-math.sqrt(dt)* random.standard_normal((M + 1,I))), axis=0))
+        S1 = S0 * exp(math.cumsum((r - 0.5 * sigma ** 2) * dt + sigma *math.sqrt(dt)* random.standard_normal((M + 1,I)), axis=0))
+        S2 = S0 * exp(math.cumsum((r - 0.5 * sigma ** 2) * dt + sigma *(-math.sqrt(dt)* random.standard_normal((M + 1,I))), axis=0))
         S1[0] = S0
         S2[0] = S0
         # Estimation de monte carlo 
