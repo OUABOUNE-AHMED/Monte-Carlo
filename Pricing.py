@@ -230,7 +230,7 @@ else:
         # Displaying call/put option price
         st.subheader(f'Call option price: {call_option_price}')
         st.subheader(f'Put option price: {put_option_price}')
-        st.subheader(f'Put option error: {std((math.exp(-r * T) * maximum(S2[-1] - K, 0) +math.exp(-r * T) * maximum(S1[-1] - K , 0) )/2)/math.sqrt(I)}')
+        st.subheader(f'Call option error: {std((math.exp(-r * T) * maximum(S2[-1] - K, 0) +math.exp(-r * T) * maximum(S1[-1] - K , 0) )/2)/math.sqrt(I)}')
         st.subheader(f'Put option error: {std((math.exp(-r * T) * maximum(K- S2[-1], 0) +math.exp(-r * T) * maximum(K- S1[-1] , 0) )/2)/math.sqrt(I)}')
 
 
