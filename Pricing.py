@@ -11,6 +11,7 @@ import numpy as np
 from scipy.stats import norm 
 import matplotlib.pyplot as plt
 import math
+from numpy import *
 
 # Local package imports
 
