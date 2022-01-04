@@ -143,6 +143,11 @@ if monte == "classique":
     exercise_date = st.date_input('Exercise date', min_value=datetime.today() + timedelta(days=1), value=datetime.today() + timedelta(days=365))
     number_of_simulations = st.slider('Number of simulations', 100, 100000, 10000)
     num_of_movements = st.slider('Number of price movement simulations to be visualized ', 0, int(number_of_simulations/10), 100)
+    data = py.get_stock_historical_data(stock=ticker, country='United states', from_date='01/01/2021', to_date='31/12/2021')
+    data['Log returns'] = np.log(data['Close']/data['Close'].shift())
+    volatility = data['Log returns'].std()*252**.5
+    st.write('Sigma = ', volatility)
+    
 
     if st.button(f'Calculate option price for {ticker}'):
         # Getting data for selected ticker
