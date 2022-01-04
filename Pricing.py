@@ -146,7 +146,7 @@ if monte == "classique":
     data = py.get_stock_historical_data(stock=ticker, country='United states', from_date='01/01/2021', to_date='31/12/2021')
     data['Log returns'] = np.log(data['Close']/data['Close'].shift())
     volatility = data['Log returns'].std()*252**.5
-    st.write('Sigma = ', round(volatility, 2))
+    st.write('Sigma = ', round(volatility, 2)*100, '%')
 
 
     if st.button(f'Calculate option price for {ticker}'):
