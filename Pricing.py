@@ -191,7 +191,7 @@ else:
     num_of_movements = st.slider('Number of price movement simulations to be visualized ', 0, int(number_of_simulations/10), 100)
     if st.button(f'Calculate option price for {ticker}'):
         # Getting data for selected ticker
-        data = py.get_stock_historical_data(stock=ticker, country='United States', from_date="01/01/1900", to_date= datetime.today().strftime('%d/%m/%Y'))
+        data =yf.download(ticker, start="1900-01-01", end=datetime.today().strftime('%Y/%m/%d'))  #py.get_stock_historical_data(stock=ticker, country='United States', from_date="01/01/1900", to_date= datetime.today().strftime('%d/%m/%Y'))
         st.write(data.tail())
         st.line_chart(data.Close)
 
