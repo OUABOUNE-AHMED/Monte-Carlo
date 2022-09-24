@@ -12,6 +12,7 @@ from scipy.stats import norm
 import matplotlib.pyplot as plt
 import math
 from numpy import *
+import  yfinance as yf
 # Local package imports
 
 
@@ -143,7 +144,7 @@ if monte == "classique":
     exercise_date = st.date_input('Exercise date', min_value=datetime.today() + timedelta(days=1), value=datetime.today() + timedelta(days=365))
     number_of_simulations = st.slider('Number of simulations', 100, 100000, 10000)
     num_of_movements = st.slider('Number of price movement simulations to be visualized ', 0, int(number_of_simulations/10), 100)
-    data = py.get_stock_historical_data(stock=ticker, country='United states', from_date='01/01/2021', to_date='31/12/2021')
+    data = yf.download(ticker, start="2021-01-01", end="2021-12-31") #py.get_stock_historical_data(stock=ticker, country='United states', from_date='01/01/2021', to_date='31/12/2021')
     data['Log returns'] = np.log(data['Close']/data['Close'].shift())
     volatility = data['Log returns'].std()*252**.5
     st.write('Sigma = ', round(volatility, 2)*100, '%')
@@ -151,7 +152,7 @@ if monte == "classique":
 
     if st.button(f'Calculate option price for {ticker}'):
         # Getting data for selected ticker
-        data = py.get_stock_historical_data(stock=ticker, country='United States', from_date="01/01/1900", to_date= datetime.today().strftime('%d/%m/%Y'))
+        data = yf.download(ticker, start="1900-01-01", end=datetime.today().strftime('%Y/%m/%d')) #py.get_stock_historical_data(stock=ticker, country='United States', from_date="01/01/1900", to_date= datetime.today().strftime('%d/%m/%Y'))
         st.write(data.tail())
         st.line_chart(data.Close)
 
